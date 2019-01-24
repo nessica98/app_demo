@@ -7,15 +7,17 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet,  View} from 'react-native';
-import { ScreenLeft,Fab,Title,Container, Content, Header,Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right,Image,Footer,FooterTab } from 'native-base';
+import {Platform, StyleSheet,  View,TouchableHighlight,Image} from 'react-native';
+import { ScreenLeft,Item,Title,Container, Content, Header,Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right,Footer,FooterTab } from 'native-base';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-
+const styles = StyleSheet.create({ bottom0: {
+  bottom : -20,
+}});
 type Props = {};
 export default class App extends Component<Props> {
   render() {
@@ -28,7 +30,7 @@ export default class App extends Component<Props> {
             </Button>
           </Left>
           <Body>
-            <Title style={{justifyContent: 'center'}}>Report</Title>
+            <Title style={{justifyContent : 'center'}}>Report</Title>
           </Body>
           <Right>
             <Button transparent>
@@ -36,6 +38,7 @@ export default class App extends Component<Props> {
             </Button>
           </Right>
         </Header>
+        
           <Card>
             <CardItem>
               <Left>
@@ -52,12 +55,11 @@ export default class App extends Component<Props> {
                   <Text>Status</Text></Body>
             </CardItem>
             <Card transparent>
-            <CardItem>
-              <View style={{flex: 1,flexDirection: 'column', justifyContent: 'center' , alignItems: 'flex-end'}}>
-                <Button><Text>Join</Text></Button>
+              <CardItem>
+              <View style={{flex: 1,flexDirection: 'column', alignItems: 'flex-end'}}>
+                <Text>+ Join</Text>
               </View>
-            </CardItem>
-              
+              </CardItem>
               </Card>
             </Card>
             
@@ -90,9 +92,33 @@ export default class App extends Component<Props> {
               </Body>
             </CardItem>
             </Card>
-          <View>
-
-          </View>
+            <View style={styles.bottom0}>
+            <Item>
+              <Left><TouchableHighlight style = {{bottom: -70 ,position: 'absolute', zIndex: 999}}>
+              <Image
+                source={require("./icon/NO.png")}
+                style = {{width:30 ,height:30}}
+              />
+             </TouchableHighlight>
+             </Left>
+              <Right>
+              <TouchableHighlight style = {{bottom: -70,position: 'absolute', zIndex: 999}}>
+              <Image
+                source={require("./icon/YES.png")}
+                style = {{width:30 ,height:30}}
+              />
+             </TouchableHighlight>
+              </Right>
+              
+            </Item>
+            
+            </View>
+            
+           
+            
+            
+          
+          
       </Container>
     );
   }
